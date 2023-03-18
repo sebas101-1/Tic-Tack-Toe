@@ -58,14 +58,14 @@ body {
 
 .square {
   background: #fff;
-  margin: 3%;
+  margin: 1%;
   border-bottom-left-radius: 50%;
   border: 2px solid black;
   float: left;
   font-size: 24px;
   font-weight: bold;
-  line-height: 34px;
-  height: 34px;
+  line-height: 70px;
+  height: 70px;
   padding: 0;
   text-align: center;
   width: 94px;
@@ -90,15 +90,20 @@ body {
   margin-left: 20px;
 }
 .Board {
-  margin: auto;
-  text-align: center;
-  margin-top: 10%;
-  margin-bottom: 0%;
+  margin-top: 15%;
+  margin-bottom: 15%;
+  width: 50%;
+  margin-left:43%;
+  display: block;
 }
 .Reset {
   background-color: white;
-  width: 70px;
+  width: 2%;
   height: 30px;
   border: 2px black solid;
   border-radius: 10%;
+  margin-left: 49%;
+}
+p{
+  text-align: center;
 }

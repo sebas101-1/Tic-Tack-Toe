@@ -1,5 +1,5 @@
 import { useState } from "react";
-let turn = -1;
+let turn = 1;
 let tempList;
 function Square({ value, clickFunc }) {
   return (
@@ -16,28 +16,74 @@ function Reset({ Clicked }) {
     </button>
   );
 }
+function checkVal(board){
+  if(board[0] === board[1]&board[0] === board[2]){
+    if(board[0] !==" "){
+      return [true,0]
+    }
+  }
+  if(board[3] === board[4]&board[3] === board[5]){
+    if(board[3] !==" "){
+      return [true,3]
+    }
+  }
+  if(board[6] === board[7]&board[6] === board[8]){
+    if(board[6] !==" "){
+      return [true,6]
+    }
+  }
+  if(board[0] === board[3]&board[0] === board[6]){
+    if(board[0] !==" "){
+      return [true,0]
+    }
+  }
+  if(board[1] === board[4]&board[4] === board[7]){
+    if(board[1] !==" "){
+      return [true,1]
+    }
+  }
+  if(board[2] === board[5]&board[5] === board[8]){
+    if(board[2] !==" "){
+      return [true,2]
+    }
+  }
+  if(board[0] === board[4]&board[4] === board[8]){
+    if(board[4] !==" "){
+      return [true,4]
+    }
+  }
+  if(board[2] === board[4]&board[4] === board[6]){
+    if(board[6] !==" "){
+      return [true,6]
+    }
+  }
+  return false
+}
 export default function Board() {
-  let [winner, setWinner] = useState("No Winner");
+  let [winner, setWinner] = useState("This Could Be Anyone's Game");
   let [squareValue, Setvalue] = useState(Array(9).fill(" "));
-  // setWinner(() => calcWinner)
-  function calcWinner() {
-    tempList = squareValue.splice(0, 9);
-    if (tempList[0] === tempList[1]&tempList[0] === tempList[3]){
-      console.log("hi")
-      return "jh"
-      if (tempList[0] !== " ") {
-        return tempList[0];
-      }
-      else{
-        return "No One Has Won"
+  function calcWinner(boardLisy) {
+    let winComb = checkVal(boardLisy);
+    console.log(winComb)
+    console.log(boardLisy[0])
+    if (winComb[0]){
+      if (boardLisy[winComb[1]] !== " ") {
+        return boardLisy[winComb[1]]+" Has Won!!!";
       }
     }
-    return "No One Has Won";
+    for(let i = 0; i<boardLisy.length;i++){
+      if(boardLisy[i]===" "){
+        return "This Could Be Anyone's Game";
+      }
+    }
+    return "Cat!!!";
   }
   // setWinner(calcWinner);
   function resetClick() {
     let replace = Array(9).fill(" ");
+    setWinner("This Could Be Anyone's Game")
     Setvalue(replace);
+    turn = 1;
   }
   function Click(i) {
     tempList = squareValue.splice(0, 9);
@@ -50,8 +96,10 @@ export default function Board() {
         tempList[i] = "O";
       }
       Setvalue(tempList);
-      setWinner(calcWinner)
+
     }
+    console.log(tempList)
+    setWinner(()=>calcWinner(tempList))
   }
   return (
     <>
@@ -86,11 +134,11 @@ export default function Board() {
             clickFunc={() => Click(8)}
             className="bottomRight"
           />
-          <p>{squareValue}</p>
-          <p>{winner}</p>
-          <Reset Clicked={resetClick} />
         </div>
       </div>
+      <p class="text">{squareValue}</p>
+      <p class="text">{winner}</p>
+      <Reset Clicked={resetClick} />
     </>
   );
 }
