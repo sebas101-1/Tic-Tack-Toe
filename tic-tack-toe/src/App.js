@@ -18,29 +18,31 @@ function Reset({ Clicked }) {
 }
 export default function Board() {
   let [winner, setWinner] = useState("No Winner");
-
-  let [squareValue, Setvalue] = useState(Array(9).fill("G"));
+  let [squareValue, Setvalue] = useState(Array(9).fill(" "));
+  // setWinner(() => calcWinner)
   function calcWinner() {
-    if (
-      (squareValue[0] === squareValue[1]) &
-      (squareValue[0] === squareValue[3])
-    ) {
-      if (squareValue[0] !== "G") {
-        return squareValue[0];
+    tempList = squareValue.splice(0, 9);
+    if (tempList[0] === tempList[1]&tempList[0] === tempList[3]){
+      console.log("hi")
+      return "jh"
+      if (tempList[0] !== " ") {
+        return tempList[0];
+      }
+      else{
+        return "No One Has Won"
       }
     }
     return "No One Has Won";
   }
   // setWinner(calcWinner);
   function resetClick() {
-    let replace = Array(9).fill("G");
+    let replace = Array(9).fill(" ");
     Setvalue(replace);
   }
   function Click(i) {
     tempList = squareValue.splice(0, 9);
-    setWinner(calcWinner);
 
-    if (tempList[i] === "G") {
+    if (tempList[i] === " ") {
       turn *= -1;
       if (turn > 0) {
         tempList[i] = "X";
@@ -48,7 +50,7 @@ export default function Board() {
         tempList[i] = "O";
       }
       Setvalue(tempList);
-      console.log(tempList);
+      setWinner(calcWinner)
     }
   }
   return (
