@@ -61,7 +61,7 @@ body {
 
 .square {
   background-color: #fff;
-  transition: background-color 4s;
+  transition: background-color, color 4s;
   margin: 12px;
   border-bottom-left-radius: 50%;
   border: 2px solid black;
@@ -81,7 +81,7 @@ body {
   height: 100px;
   margin: 6px;
   margin-left: 12px;
-  transition: background-color, width, height 4s;
+  transition: background-color 4s;
 }
 
 .board-row:after {
@@ -108,12 +108,20 @@ body {
 }
 .Reset {
   background-color: white;
-  width: 2%;
+  width: 4%;
   height: 30px;
   border: 2px black solid;
   border-radius: 10%;
-  margin-left: 49%;
+  margin-left: 48%;
+  
 }
 p{
   text-align: center;
+  size: 12px;
+}
+.darkMode{
+  width: 42px;
+  height: 42px;
+  border: 2px, solid, black;
+  border-radius: 50%;
 }
