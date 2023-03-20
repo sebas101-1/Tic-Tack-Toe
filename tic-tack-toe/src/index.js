@@ -7,8 +7,6 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <>
-    <p>Tick Tack Toes</p>
-    <hr />
     <App />
   </>
 );

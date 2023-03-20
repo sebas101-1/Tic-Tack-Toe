@@ -63,20 +63,23 @@ function checkVal(board){
   }
   return false
 }
+
 export default function Board() {
   let [winner, setWinner] = useState("This Could Be Anyone's Game");
   let [squareValue, Setvalue] = useState(Array(9).fill(" "));
   let [darkMode, setDarkMode] = useState(false);
   let [buttonVal, setButton] = useState(sun);
-
-  function darkButton(){
-    return <button class="darkMode" onClick={buttonClick}><img alt="dark/light mode"src={buttonVal}/></button>
-  }
   function buttonClick(){
     setDarkMode(!darkMode);
     if(darkMode){
       setButton(moon);
     }
+  }
+  function darkButton({click}){
+    return(
+    <button class="darkMode" onClick={click}>
+      <img alt="dark/light mode"src={buttonVal}/>
+    </button>);
   }
   function calcWinner(boardLisy) {
     let winComb = checkVal(boardLisy);
@@ -119,6 +122,11 @@ export default function Board() {
   }
   return (
     <>
+    <div>
+      <p>Tick Tack Toes</p> 
+      <darkButton click={buttonClick}/>
+    </div>
+    <hr />
       <div className="Board" style={{marginLeft: margin}}>
         <div className="board-row">
           <Square
@@ -155,7 +163,6 @@ export default function Board() {
       <p class="text">{squareValue}</p>
       <p class="text">hi {winner}</p>
       <Reset Clicked={resetClick} /> 
-      <darkButton/>
     </>
   );
 }
