@@ -1,3 +1,6 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 * {
   box-sizing: border-box;
 }
@@ -57,8 +60,9 @@ body {
 }
 
 .square {
-  background: #fff;
-  margin: 1%;
+  background-color: #fff;
+  transition: background-color 4s;
+  margin: 12px;
   border-bottom-left-radius: 50%;
   border: 2px solid black;
   float: left;
@@ -70,6 +74,14 @@ body {
   text-align: center;
   width: 94px;
   height: 94px;
+}
+.square:hover{
+  background-color: rgb(235, 196, 236);
+  width: 100px;
+  height: 100px;
+  margin: 6px;
+  margin-left: 12px;
+  transition: background-color, width, height 4s;
 }
 
 .board-row:after {
@@ -92,8 +104,6 @@ body {
 .Board {
   margin-top: 15%;
   margin-bottom: 15%;
-  width: 50%;
-  margin-left:43%;
   display: block;
 }
 .Reset {

@@ -1,6 +1,10 @@
 import { useState } from "react";
 let turn = 1;
 let tempList;
+let width = window.screen.width;
+let margin = (width-360)/2;
+let moon = "https://imgs.search.brave.com/Nro8uRsfvKpr25OxdvHc0Gr8xliCpSdglA9w1yjJtpA/rs:fit:980:980:1/g:ce/aHR0cHM6Ly9jZG4u/b25saW5ld2ViZm9u/dHMuY29tL3N2Zy9p/bWdfNTk3OC5wbmc";
+let sun = "https://imgs.search.brave.com/6TS-AurMypeRMvUbwkns9XrqGV8dVW450I03cilJqWc/rs:fit:600:600:1/g:ce/aHR0cDovL3d3dy5j/bGlwYXJ0YmVzdC5j/b20vY2xpcGFydHMv/TTlULzRway9NOVQ0/cGthaUUucG5n";
 function Square({ value, clickFunc }) {
   return (
     <button className="square" onClick={clickFunc}>
@@ -62,6 +66,18 @@ function checkVal(board){
 export default function Board() {
   let [winner, setWinner] = useState("This Could Be Anyone's Game");
   let [squareValue, Setvalue] = useState(Array(9).fill(" "));
+  let [darkMode, setDarkMode] = useState(false);
+  let [buttonVal, setButton] = useState(sun);
+
+  function darkButton(){
+    return <button class="darkMode" onClick={buttonClick}><img alt="dark/light mode"src={buttonVal}/></button>
+  }
+  function buttonClick(){
+    setDarkMode(!darkMode);
+    if(darkMode){
+      setButton(moon);
+    }
+  }
   function calcWinner(boardLisy) {
     let winComb = checkVal(boardLisy);
     console.log(winComb)
@@ -103,7 +119,7 @@ export default function Board() {
   }
   return (
     <>
-      <div className="Board">
+      <div className="Board" style={{marginLeft: margin}}>
         <div className="board-row">
           <Square
             value={squareValue[0]}
@@ -137,8 +153,9 @@ export default function Board() {
         </div>
       </div>
       <p class="text">{squareValue}</p>
-      <p class="text">{winner}</p>
-      <Reset Clicked={resetClick} />
+      <p class="text">hi {winner}</p>
+      <Reset Clicked={resetClick} /> 
+      <darkButton/>
     </>
   );
 }
