@@ -5,7 +5,7 @@ let width = window.screen.width;
 let margin = (width-425)/2;
 let moon = "https://imgs.search.brave.com/Nro8uRsfvKpr25OxdvHc0Gr8xliCpSdglA9w1yjJtpA/rs:fit:980:980:1/g:ce/aHR0cHM6Ly9jZG4u/b25saW5ld2ViZm9u/dHMuY29tL3N2Zy9p/bWdfNTk3OC5wbmc";
 let buttonMargin = (width-49)/2;
-let sun = "https://imgs.search.brave.com/6TS-AurMypeRMvUbwkns9XrqGV8dVW450I03cilJqWc/rs:fit:600:600:1/g:ce/aHR0cDovL3d3dy5j/bGlwYXJ0YmVzdC5j/b20vY2xpcGFydHMv/TTlULzRway9NOVQ0/cGthaUUucG5n";
+let sun = "https://imgs.search.brave.com/HFgqxgJ-iXg4pKp2qy9w5Gf21EvVq-5gRaUMlkGTJpk/rs:fit:512:512:1/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvc2ltcGxpY2l0/eS12ZWN0b3ItaWNv/bi1zZXQvNTEyL3N1/bi5wbmc";
 function Square({ value, clickFunc }) {
   return (
     <button className="square" onClick={clickFunc}>
