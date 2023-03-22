@@ -61,7 +61,6 @@ body {
 
 .square {
   background-color: #fff;
-  transition: background-color, color 4s;
   margin: 12px;
   border-bottom-left-radius: 50%;
   border: 2px solid black;
@@ -74,6 +73,7 @@ body {
   text-align: center;
   width: 94px;
   height: 94px;
+  transition: all 0.1s;
 }
 .square:hover{
   background-color: rgb(235, 196, 236);
@@ -111,9 +111,17 @@ body {
   width: 4%;
   height: 30px;
   border: 2px black solid;
-  border-radius: 15%;
+  border-radius: 0%;
   margin-left: 48%;
+  margin-top: 10px;
   
+}
+.Reset:hover{
+  margin-left: 47.5%;
+  margin-top: 0px;
+  width: 5%;
+  height: 40px;
+  transition: all 0.1s;
 }
 p{
   text-align: center;
@@ -124,4 +132,16 @@ p{
   height: 42px;
   border: 0px, solid, black;
   border-radius: 50%;
+}
+.light{
+  background-color: white;
+  border: 2px black solid;
+  color: white;
+
+}
+.black{
+  background-color: black;
+  border: 2px white solid;
+  color: black;
+  
 }
