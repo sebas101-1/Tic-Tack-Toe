@@ -3,12 +3,14 @@ let turn = 1;
 let tempList;
 let width = window.screen.width;
 let margin = (width-425)/2;
-let moon = "https://imgs.search.brave.com/Nro8uRsfvKpr25OxdvHc0Gr8xliCpSdglA9w1yjJtpA/rs:fit:980:980:1/g:ce/aHR0cHM6Ly9jZG4u/b25saW5ld2ViZm9u/dHMuY29tL3N2Zy9p/bWdfNTk3OC5wbmc";
+let moon = "https://imgs.search.brave.com/5BtuNgiATBRkBFOfO-lx_v9iW5QSYn2ENoN1rXzc9RY/rs:fit:1024:1024:1/g:ce/aHR0cDovL2ljb25z/Lmljb25hcmNoaXZl/LmNvbS9pY29ucy9n/b29nbGUvbm90by1l/bW9qaS10cmF2ZWwt/cGxhY2VzLzEwMjQv/NDI2NDUtY3Jlc2Nl/bnQtbW9vbi1pY29u/LnBuZw";
 let buttonMargin = (width-70)/2;
 let sun = "https://imgs.search.brave.com/HFgqxgJ-iXg4pKp2qy9w5Gf21EvVq-5gRaUMlkGTJpk/rs:fit:512:512:1/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvc2ltcGxpY2l0/eS12ZWN0b3ItaWNv/bi1zZXQvNTEyL3N1/bi5wbmc";
-function Square({ value, clickFunc }) {
+function Square({ classSet, value, clickFunc }) {
+  let setClass = classSet+"square"
+  console.log(setClass)
   return (
-    <button className="square" onClick={clickFunc}>
+    <button className={setClass+" square"} onClick={clickFunc}>
       {value}
     </button>
   );
@@ -69,23 +71,31 @@ export default function Board() {
   let [winner, setWinner] = useState("This Could Be Anyone's Game");
   let [squareValue, Setvalue] = useState(Array(9).fill(" "));
   let [darkMode, setDarkMode] = useState(false);
-  let [buttonVal, setButton] = useState(sun);
-  let[squareClass, setClass] = useState("light ")
+  let [buttonVal, setButton] = useState(moon);
+  let[squareClass, setClass] = useState("dark ")
+  let squareclassVal = String(squareClass);
+  let[textVar,setText] = useState("white text")
+  if(darkMode){
+    document.body.style = 'background: white;';
+  }
+  else{
+    document.body.style = 'background: black;';
+  }
   function buttonClick(){
     setDarkMode(!darkMode);
     if(darkMode){
       setButton(moon);
       setClass("dark ")
+      setText("white text")
     }
     else{
       setButton(sun);
       setClass("light ")
+      setText("black text")
     }
   }
   function calcWinner(boardLisy) {
     let winComb = checkVal(boardLisy);
-    console.log(winComb)
-    console.log(boardLisy[0])
     if (winComb[0]){
       if (boardLisy[winComb[1]] !== " ") {
         return boardLisy[winComb[1]]+" Has Won!!!";
@@ -118,13 +128,12 @@ export default function Board() {
       Setvalue(tempList);
 
     }
-    console.log(tempList)
     setWinner(()=>calcWinner(tempList))
   }
   return (
     <>
     <div>
-      <p>Tick Tack Toes</p> <button class="darkMode" onClick={buttonClick} style={{marginLeft: buttonMargin}}> <img alt="dark/light mode"src={buttonVal}/> </button>
+      <p className={textVar}>Tick Tack Toes</p> <button class="darkMode" onClick={buttonClick} style={{marginLeft: buttonMargin}}> <img alt="dark/light mode"src={buttonVal}/> </button>
     </div>
     <hr />
       <div className="Board" style={{marginLeft: margin}}>
@@ -132,39 +141,39 @@ export default function Board() {
           <Square
             value={squareValue[0]}
             clickFunc={() => Click(0)}
-            className={{squareClass}+"topLeft"}
+            classSet={squareclassVal}
           />
-          <Square value={squareValue[1]} clickFunc={() => Click(1)} />
+          <Square classSet={squareclassVal} value={squareValue[1]} clickFunc={() => Click(1)} />
           <Square
             value={squareValue[2]}
             clickFunc={() => Click(2)}
-            className={squareClass+"topRight"}
+            classSet={squareclassVal}
             
           />
         </div>
         <div className="board-row">
-          <Square value={squareValue[3]} className={squareClass} clickFunc={() => Click(3)}  />
-          <Square value={squareValue[4]} className={squareClass} clickFunc={() => Click(4)}  />
-          <Square value={squareValue[5]} className={squareClass} clickFunc={() => Click(5)}  />
+          <Square value={squareValue[3]} classSet={squareclassVal} clickFunc={() => Click(3)}  />
+          <Square value={squareValue[4]} classSet={squareclassVal} clickFunc={() => Click(4)}  />
+          <Square value={squareValue[5]} classSet={squareclassVal} clickFunc={() => Click(5)}  />
         </div>
         <div className="board-row">
           <Square
             value={squareValue[6]}
             clickFunc={() => Click(6)}
-            className={squareClass+"bottomLeft"}
+            classSet={squareclassVal}
             
           />
-          <Square value={squareValue[7]} clickFunc={() => Click(7)} textColor  />
+          <Square value={squareValue[7]} clickFunc={() => Click(7)} classSet={squareclassVal}  />
           <Square
             value={squareValue[8]}
             clickFunc={() => Click(8)}
-            className={squareClass+"bottomRight"}
+            classSet={squareclassVal}
             
           />
         </div>
       </div>
-      <p class="text">{squareValue}</p>
-      <p class="text">{winner}</p>
+      <p className={textVar}>{squareValue}</p>
+      <p className={textVar}>{winner}</p>
       <Reset Clicked={resetClick} /> 
     </>
   );
