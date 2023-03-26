@@ -117,17 +117,17 @@ export default function Board() {
   }
   function Click(i) {
     tempList = squareValue.splice(0, 9);
+    if(winner !== "X has Won!!!"|winner !== "O has Won!!!")
+      if (tempList[i] === " ") {
+        turn *= -1;
+        if (turn > 0) {
+          tempList[i] = "X";
+        } else {
+          tempList[i] = "O";
+        }
+        Setvalue(tempList);
 
-    if (tempList[i] === " ") {
-      turn *= -1;
-      if (turn > 0) {
-        tempList[i] = "X";
-      } else {
-        tempList[i] = "O";
       }
-      Setvalue(tempList);
-
-    }
     setWinner(()=>calcWinner(tempList))
   }
   return (

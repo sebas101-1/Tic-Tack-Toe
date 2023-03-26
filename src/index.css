@@ -71,7 +71,7 @@ body {
   text-align: center;
   width: 94px;
   height: 94px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 .square:hover{
   /* background-color: rgb(235, 196, 236); */
@@ -79,7 +79,7 @@ body {
   height: 100px;
   margin: 6px;
   margin-left: 12px;
-  transition: all 0.5s;
+  transition: all 0.2s;
 }
 
 .board-row:after {
@@ -101,8 +101,8 @@ body {
 }
 .Board {
   margin-top: 15%;
-  margin-bottom: 15%;
-  display: block;
+  margin-bottom: 5%;
+  
 }
 .Reset {
   background-color: white;
@@ -147,8 +147,12 @@ body{
   transition: all 0.5s;
 }
 .white{
+  margin-bottom: 1%;
+  margin-top: 1%;
   color: white;
 }
 .black{
+  margin-bottom: 1%;
+  margin-top: 1%;
   color: black; 
 }
