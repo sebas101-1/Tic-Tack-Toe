@@ -3,7 +3,7 @@ let turn = 1;
 let tempList;
 let width = window.screen.width;
 let margin = (width-425)/2;
-let moon = "https://imgs.search.brave.com/5BtuNgiATBRkBFOfO-lx_v9iW5QSYn2ENoN1rXzc9RY/rs:fit:1024:1024:1/g:ce/aHR0cDovL2ljb25z/Lmljb25hcmNoaXZl/LmNvbS9pY29ucy9n/b29nbGUvbm90by1l/bW9qaS10cmF2ZWwt/cGxhY2VzLzEwMjQv/NDI2NDUtY3Jlc2Nl/bnQtbW9vbi1pY29u/LnBuZw";
+let moon = "https://imgs.search.brave.com/_GqTsgaJS0F47BExZBXrtT7mgxLiRVFUkYETKQyahTQ/rs:fit:512:512:1/g:ce/aHR0cDovL3d3dy5l/bW9qaS5jby51ay9m/aWxlcy9waGFudG9t/LW9wZW4tZW1vamlz/L2FuaW1hbHMtbmF0/dXJlLXBoYW50b20v/MTI0OTYtZnVsbC1t/b29uLXN5bWJvbC5w/bmc";
 let buttonMargin = (width-70)/2;
 let sun = "https://imgs.search.brave.com/HFgqxgJ-iXg4pKp2qy9w5Gf21EvVq-5gRaUMlkGTJpk/rs:fit:512:512:1/g:ce/aHR0cHM6Ly9jZG40/Lmljb25maW5kZXIu/Y29tL2RhdGEvaWNv/bnMvc2ltcGxpY2l0/eS12ZWN0b3ItaWNv/bi1zZXQvNTEyL3N1/bi5wbmc";
 function Square({ classSet, value, clickFunc }) {
